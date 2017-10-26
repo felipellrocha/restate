@@ -1,4 +1,4 @@
-import { setIn } from './restate'
+import setIn from './index'
 
 describe('setIn', function() {
   beforeEach(() => {

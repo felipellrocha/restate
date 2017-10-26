@@ -1,8 +1,5 @@
-import { setIn } from './restate';
+import setIn from './setIn';
 
-const data = {
-  bruce: {
-    lastName: 'Wayne',
-  },
-}
-setIn(['bruce', 'lastName'], 'Wayne')(data)
+export {
+  setIn,
+};

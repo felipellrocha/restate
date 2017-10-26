@@ -17,8 +17,7 @@ const setIn = (path, value) => (state) => {
   else if (typeof state === 'object') {
     const nextState = setIn(rest, value)(currentState);
 
-    if (nextState === currentState || state[currentPath] === value)
-      return state;
+    if (nextState === currentState) return state;
 
     return {
       ...state,
@@ -30,6 +29,4 @@ const setIn = (path, value) => (state) => {
   }
 }
 
-export {
-  setIn,
-}
+export default setIn;
