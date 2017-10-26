@@ -1,10 +1,12 @@
-const setIn = (path, value) => (state) => {
+import curry from '../curry';
+
+const setIn = (path, value, state) => {
   const [ currentPath, ...rest ] = path;
 
   const currentState = state[currentPath];
 
   if (Array.isArray(state)) {
-    const nextState = setIn(rest, value)(currentState);
+    const nextState = setIn(rest, value, currentState);
 
     if (nextState === currentState) return state;
 
@@ -15,7 +17,7 @@ const setIn = (path, value) => (state) => {
     ];
   }
   else if (typeof state === 'object') {
-    const nextState = setIn(rest, value)(currentState);
+    const nextState = setIn(rest, value, currentState);
 
     if (nextState === currentState) return state;
 
@@ -29,4 +31,4 @@ const setIn = (path, value) => (state) => {
   }
 }
 
-export default setIn;
+export default curry(setIn);
